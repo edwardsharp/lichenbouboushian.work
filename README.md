@@ -88,7 +88,7 @@ captions are optional front-matter fields and support markdown, including links 
 for a page's main photograph, add `image_caption` alongside `image` and `image_alt`:
 
 ```yaml
-image_caption: "photo by [photographer name](https://example.com)"
+image_caption: "photo by [jimmy urine](https://mindlessselfindulgence.com)"
 ```
 
 this appears below the main photograph on about and project pages, and below the same photo on homepage/project cards. credit links are separate from the project link.
@@ -157,7 +157,7 @@ within engagement `text` fields, use relative links such as `[a project](../proj
 
 the imported archive ends in 2025; no new engagements have been invented. historical quotations and credits retain the wording of the original site.
 
-to replace the CV, upload a PDF into `documents/`, then update the link and year in `cv.md`. the existing contact address is retained in `_config.yml`; confirm it before launch.
+to replace the CV, upload a PDF into `documents/`, then update the link and year in `cv.md`. the existing contact address is retained in `_config.yml`.
 
 ## run locally on yr own computer
 
@@ -170,27 +170,17 @@ bundle exec jekyll serve --livereload
 
 changes to page text, images, styles, and templates rebuild automatically. restart the server after changing `_config.yml`.
 
-to build without running a server:
-
-```sh
-bundle exec jekyll build
-```
-
 ## publish on github pages
 
 in the repository's settings → pages, choose github actions as the source. the included workflow builds pull requests, then builds and deploys changes pushed to `main`. enable pages before running the workflow.
 
 for a custom domain, set it in pages settings, configure DNS, and add a root `CNAME` file containing the domain. the workflow supplies `url` and `baseurl` automatically from github pages, including custom domains. for builds outside that workflow, set `url` in `_config.yml` to the published `https://…` origin and `baseurl` to any hosting subpath.
 
-no domain or production deployment is configured by this initial setup.
-
-## link previewz and favicon
-
-the original site's favicon is kept in `favicon.ico`. each page includes Open Graph and large-image social card metadata, with a title, description, image, and image description. canonical URLs and preview image URLs are absolute when the publishing origin is configured.
+## link previewz
 
 project previews use their `image` and `image_alt` settings. pages without a photograph use `social_image` and `social_image_alt` from `_config.yml`. a page can override its preview without changing its visible photograph by setting `social_image` and `social_image_alt` in its front matter. keep the default image dimensions in `_config.yml` in sync if replacing the default photograph.
 
-preview services cache results and decide how to crop and display images; changes may not appear immediately after deployment.
+_note:_ preview services cache results and decide how to crop and display images; changes may not appear immediately after deployment.
 
 ## design and assets
 
