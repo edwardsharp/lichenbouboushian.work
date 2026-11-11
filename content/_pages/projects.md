@@ -1,5 +1,5 @@
 ---
-title: Select projects
+title: Select Projects
 layout: projects
 permalink: /projects/
 nav_order: 3
