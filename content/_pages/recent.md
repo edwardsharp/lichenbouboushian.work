@@ -10,7 +10,7 @@ description: Performance engagements, workshops, publications, and an archive of
 
 Performances, workshops, releases, and other encounters.
 
-For current dates and invitations, [say hello](mailto:{{ site.email }}).
+For current dates and invitations, [say hello ↗](mailto:{{ site.email }}).
 
 ## 2025
 
