@@ -111,7 +111,7 @@ videos:
     caption: "video by [videographer name](https://example.com)"
 ```
 
-without `caption`, the video title is shown below the player. this works for project videos and the videos nested under each year on recent + upcoming.
+without `caption`, the video title is shown below the player. project videos use this YAML list; recent + upcoming uses the inline video include described below.
 
 photographs within the writing use named front-matter objects, such as `notes_photo` or `workshop_photo`. add a `caption` to that object:
 
@@ -135,25 +135,24 @@ for internal markdown links, use jekyll's `relative_url` filter so links also wo
 
 ## update engagements or the CV
 
-edit the `years` list at the top of `recent.md`. each year has `entries`; each entry has `text` (markdown is supported) and an optional `date` label. put new years first. the section headings are generated automatically.
+edit `recent.md` as ordinary markdown below its short front-matter block. introductory paragraphs go before the first year. start each year with `##`, put new years first, and separate updates with blank lines. the layout turns those headings into year columns and keeps them sticky while scrolling. use `###` for any subheadings within a year.
 
-```yaml
-years:
-  - year: 2027
-    entries:
-      - date: september
-        text: a performance of **project title** at [a venue](https://example.com).
+```markdown
+## 2027
+
+_september_<br>
+a performance of **project title** at [a venue](https://example.com).
 ```
 
-each year's optional `videos` list takes a youtube `id` and descriptive `title`. videos appear directly below that year's entries, with captions:
+an italic date at the start of a paragraph is styled as a small date label; `<br>` keeps the date on its own line.
 
-```yaml
-videos:
-  - id: youtube-video-id
-    title: project title, venue, and date
+place a video anywhere between updates, with a blank line on either side:
+
+```liquid
+{% include video.html id="youtube-video-id" title="project title, venue, and date" caption="video by [name](https://example.com)" %}
 ```
 
-within engagement `text` fields, use relative links such as `[a project](../projects/undoing-and-doing/)` for other site pages; liquid expressions inside these settings are not evaluated.
+`id` is the youtube video ID, not its full URL. `title` is required for accessibility. `caption` is optional and supports markdown links; without it, the title appears below the video. move the include to move the video. no iframe HTML or YAML entry is needed. internal links can use `relative_url`, just like other markdown pages.
 
 the imported archive ends in 2025; no new engagements have been invented. historical quotations and credits retain the wording of the original site.
 

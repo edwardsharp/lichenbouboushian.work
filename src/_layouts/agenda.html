@@ -2,35 +2,18 @@
 layout: default
 ---
 <article class="shell page agenda">
+  {% assign sections = content | split: '<h2' %}
   <header class="agenda-heading">
     <p class="eyebrow">{{ page.eyebrow | escape }}</p>
     <h1 class="display-title">{{ page.title | escape }}</h1>
-    <div class="agenda-intro">{{ content }}</div>
+    <div class="agenda-intro">{{ sections.first }}</div>
   </header>
-  {% for group in page.years %}
-    <section class="agenda-year" aria-labelledby="year-{{ group.year }}">
-      <h2 id="year-{{ group.year }}">{{ group.year }}</h2>
-      <div>
-        <ul class="agenda-entries">
-          {% for entry in group.entries %}
-            <li class="agenda-entry">
-              {% if entry.date %}<span class="agenda-date">{{ entry.date | escape }}</span>{% endif %}
-              {{ entry.text | markdownify }}
-            </li>
-          {% endfor %}
-        </ul>
-        {% if group.videos %}
-          <div class="agenda-videos">
-            {% for video in group.videos %}
-              <figure class="agenda-video">
-                <iframe src="https://www.youtube.com/embed/{{ video.id | escape }}" title="{{ video.title | escape }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                {% assign video_caption = video.caption | default: video.title %}
-                {% include caption.html text=video_caption %}
-              </figure>
-            {% endfor %}
-          </div>
-        {% endif %}
-      </div>
+  {% comment %}Each Markdown level-two heading starts a year; preserve its generated ID and markup.{% endcomment %}
+  {% for section in sections offset:1 %}
+    {% assign heading = section | split: '</h2>' | first | append: '</h2>' %}
+    <section class="agenda-year">
+      <h2{{ heading }}
+      <div class="agenda-content">{{ section | remove_first: heading }}</div>
     </section>
   {% endfor %}
 </article>

@@ -60,3 +60,13 @@ document.querySelectorAll("[data-gallery]").forEach((gallery) => {
   controls.hidden = false;
   update();
 });
+
+document.querySelectorAll(".project-media").forEach((media) => {
+  const update = () => {
+    media.style.setProperty("--media-height", `${media.getBoundingClientRect().height}px`);
+    media.classList.add("is-measured");
+  };
+  const observer = new ResizeObserver(update);
+  observer.observe(media);
+  update();
+});
