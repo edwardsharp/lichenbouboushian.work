@@ -80,7 +80,6 @@ h1, h2, h3 { line-height: 1.12; }
   flex-wrap: wrap;
   gap: 1rem 2rem;
   padding-block: 2.2rem;
-  border-bottom: 1px solid var(--line);
 }
 .wordmark {
   display: inline-flex;
@@ -93,7 +92,7 @@ h1, h2, h3 { line-height: 1.12; }
 }
 .nav-list { display: flex; flex-wrap: wrap; gap: .3rem 1.7rem; list-style: none; margin: 0; padding: 0; }
 .nav-list a { display: block; padding-block: .5rem; font-size: .95rem; text-decoration: none; }
-.nav-list a[aria-current] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+.site-header a[aria-current] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
 .home-intro { padding-block: 4rem; }
 .eyebrow { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .display-title { font-size: clamp(3rem, 6.8vw, 6.3rem); font-weight: 200; letter-spacing: -.055em; overflow-wrap: anywhere; }
@@ -106,13 +105,16 @@ h1, h2, h3 { line-height: 1.12; }
 .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.75rem 1.75rem; }
 .project-card a { display: block; text-decoration: none; }
 .project-image { position: relative; overflow: hidden; }
-.project-image img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; transition: transform 250ms ease; }
+.project-image img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; transition: transform 250ms ease, filter 300ms ease; }
 .project-card a:hover img { transform: scale(1.025); }
 .project-card a:hover .image-arrow, .project-card a:focus-visible .image-arrow { background: var(--neon); color: var(--on-neon); }
 .image-arrow { position: absolute; right: 1rem; bottom: 1rem; width: 2.5rem; height: 2.5rem; display: grid; place-items: center; background: var(--paper); color: var(--ink); border-radius: 50%; }
 .project-caption { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .25rem 1rem; margin-top: .9rem; }
 .project-caption h3 { font-size: 1.2rem; font-weight: 500; }
 .project-caption > span { font-size: .85rem; color: var(--muted); }
+@media (hover: hover) and (pointer: fine) {
+  .project-grid:has(.project-image:hover) .project-card:not(:has(.project-image:hover)) .project-image img { filter: grayscale(1); }
+}
 .contact-strip { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; background: var(--neon); color: var(--on-neon); padding: 2.5rem; margin-block: 5rem; }
 .contact-strip h2 { font-size: clamp(1.9rem, 3vw, 2.8rem); font-weight: 300; letter-spacing: -.03em; }
 .contact-strip p { margin-top: .75rem; font-size: 1rem; }
