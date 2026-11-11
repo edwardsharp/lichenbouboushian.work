@@ -6,6 +6,17 @@ nav_order: 1
 description: Biography and artist statement of Lichen Bouboushian.
 image: "/images/DSC8148.jpg"
 image_alt: Lichen performing with a microphone and black fabric.
+gallery:
+  - src: /images/carousel/1.jpg
+    alt: Lichen performing with a microphone, green gloves, and rope wrapped around their face.
+  - src: /images/carousel/2.jpg
+    alt: Lichen with bright pink hair, crouching beside a bed as an audience watches through a window.
+  - src: /images/carousel/3.jpg
+    alt: Lichen in a patterned shirt, holding their hands around their eyes during a performance.
+  - src: /images/carousel/4.jpg
+    alt: Lichen seated on the floor, extending a microphone toward an audience member under pink lighting.
+  - src: /images/carousel/5.jpg
+    alt: Lichen performing outdoors with blue face paint, pink yarn, and one arm raised.
 ---
 
 ## Bio

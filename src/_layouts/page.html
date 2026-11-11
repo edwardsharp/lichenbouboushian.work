@@ -7,7 +7,11 @@ layout: default
     {% if page.intro %}<p class="page-intro">{{ page.intro | escape }}</p>{% endif %}
   </header>
   <div{% if page.columns %} class="project-body"{% endif %}>
-    {% if page.image %}
+    {% if page.gallery %}
+      <div class="{% if page.columns %}project-media{% else %}page-image{% endif %}">
+        {% include carousel.html images=page.gallery title=page.title %}
+      </div>
+    {% elsif page.image %}
       <figure class="{% if page.columns %}project-media{% else %}page-image{% endif %}">
         <img class="{% if page.columns %}project-hero{% endif %}" src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" decoding="async">
         {% include caption.html text=page.image_caption %}
