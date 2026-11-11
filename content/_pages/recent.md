@@ -3,7 +3,8 @@ title: Recent + Upcoming
 layout: agenda
 permalink: /recent/
 nav_order: 2
-eyebrow: News / dates / notes
+# note: need to wrap eyebrow in double quotes because of pipe characters "|"
+eyebrow: "News | dates | notes"
 description: Performance engagements, workshops, publications, and an archive of activity through 2025.
 ---
 
@@ -17,7 +18,7 @@ Artist-in-residence at **Ice Cream Acres**, Lockhart, TX.
 
 Published the poem **Tarry/Romans** in [WUSSY Mag Vol 14](https://www.wussymag.com/shop/p/preorder-wussy-vol14-with-perfume-genius-serpentwithfeet-boy-harsher).
 
-*September*<br>
+_September_<br>
 Announced premiere of **Holding Multiplicity** at [Performatorium/Queer City Cinema](https://www.queercitycinema.ca/2024/), Regina, Canada.
 
 ## 2024
