@@ -1,0 +1,48 @@
+title: Lichen Bouboushian
+description: >-
+  Interdisciplinary performance artist working across dance, experimental
+  music/noise, performance art, and social practice.
+email: hello@lorenebouboushian.org
+lang: en
+locale: en_US
+url: ""
+baseurl: ""
+social_image: /images/DSC8148.jpg
+social_image_alt: Lichen performing with a microphone and black fabric.
+social_image_width: 2823
+social_image_height: 1885
+
+collections_dir: content
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+layouts_dir: src/_layouts
+includes_dir: src/_includes
+sass:
+  sass_dir: src/_sass
+  style: compressed
+  sourcemap: never
+
+defaults:
+  - scope:
+      path: "content/_pages"
+      type: pages
+    values:
+      layout: page
+
+markdown: kramdown
+kramdown:
+  input: GFM
+strict_front_matter: true
+liquid:
+  error_mode: strict
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - .github

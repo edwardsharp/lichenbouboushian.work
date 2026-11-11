@@ -1,0 +1,11 @@
+<header class="site-header shell">
+  <a class="wordmark" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>{{ site.title | escape }}</a>
+  <nav aria-label="Main navigation">
+    <ul class="nav-list">
+      {% assign navigation = site.documents | where_exp: "item", "item.nav_order != nil" | sort: 'nav_order' %}
+      {% for item in navigation %}
+        <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url or page.layout == 'project' and item.url == '/projects/' %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+</header>

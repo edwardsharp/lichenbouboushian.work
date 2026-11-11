@@ -1,0 +1,21 @@
+<div class="project-grid">
+  {% for project in include.projects %}
+    <article class="project-card">
+      <figure>
+      <a href="{{ project.url | relative_url }}">
+        <div class="project-image">
+          <img src="{{ project.image | relative_url }}" alt="{{ project.image_alt | escape }}" width="1500" height="1200" {% if forloop.index > 2 %}loading="lazy"{% endif %} decoding="async">
+          <span class="image-arrow" aria-hidden="true">↗</span>
+        </div>
+      </a>
+      {% include caption.html text=project.image_caption %}
+      </figure>
+      <a href="{{ project.url | relative_url }}">
+        <div class="project-caption">
+          <h3>{{ project.title | escape }}</h3>
+          <span>{{ project.medium | escape }}</span>
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</div>

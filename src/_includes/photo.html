@@ -1,0 +1,4 @@
+<figure>
+  <img src="{{ include.image.src | relative_url }}" alt="{{ include.image.alt | escape }}" loading="lazy" decoding="async">
+  {% include caption.html text=include.image.caption %}
+</figure>

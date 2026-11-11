@@ -1,0 +1,19 @@
+<section class="gallery" data-gallery aria-label="{{ include.title | escape }} image gallery">
+  <div class="gallery-track" id="gallery-{{ page.slug }}" tabindex="0" aria-label="Photographs; use left and right arrow keys to browse">
+    {% for image in include.images %}
+      <figure class="gallery-slide" role="group" aria-label="{{ forloop.index }} of {{ include.images.size }}">
+        <a href="{{ image.src | relative_url }}" aria-label="Open full-size image: {{ image.alt | escape }}">
+          <img src="{{ image.src | relative_url }}" alt="{{ image.alt | escape }}" {% unless forloop.first %}loading="lazy"{% endunless %} decoding="async">
+        </a>
+        {% include caption.html text=image.caption %}
+      </figure>
+    {% endfor %}
+  </div>
+  <div class="gallery-controls" hidden>
+    <p class="gallery-counter" aria-live="polite" aria-atomic="true"><span data-gallery-current>1</span> / {{ include.images.size }}</p>
+    <div class="gallery-buttons">
+      <button type="button" data-gallery-previous aria-controls="gallery-{{ page.slug }}" aria-label="Previous image"><span aria-hidden="true">←</span></button>
+      <button type="button" data-gallery-next aria-controls="gallery-{{ page.slug }}" aria-label="Next image"><span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+</section>

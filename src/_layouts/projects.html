@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<div class="shell page">
+  <header class="page-heading">
+    <h1 class="display-title">{{ page.title | escape }}</h1>
+    <div class="page-intro">{{ content }}</div>
+  </header>
+  {% assign projects = site.documents | where: 'layout', 'project' | sort: 'order' %}
+  {% include project-grid.html projects=projects %}
+</div>

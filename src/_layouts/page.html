@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<article class="shell page{% if page.columns %} project-page{% endif %}">
+  <header class="page-heading">
+    <h1 class="display-title">{{ page.title | escape }}</h1>
+    {% if page.intro %}<p class="page-intro">{{ page.intro | escape }}</p>{% endif %}
+  </header>
+  <div{% if page.columns %} class="project-body"{% endif %}>
+    {% if page.image %}
+      <figure class="{% if page.columns %}project-media{% else %}page-image{% endif %}">
+        <img class="{% if page.columns %}project-hero{% endif %}" src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" decoding="async">
+        {% include caption.html text=page.image_caption %}
+      </figure>
+    {% endif %}
+    <div class="prose{% if page.columns %} project-copy{% endif %}">{{ content }}</div>
+  </div>
+</article>

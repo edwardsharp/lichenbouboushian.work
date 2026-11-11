@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<article class="shell page project-page">
+  <header class="page-heading">
+    <a class="text-link" href="{{ '/projects/' | relative_url }}"><span aria-hidden="true">←</span> All projects</a>
+    <h1 class="display-title">{{ page.title | escape }}</h1>
+    <p class="eyebrow">{{ page.medium | escape }}</p>
+  </header>
+  <div class="project-body">
+    <div class="project-media">
+      {% if page.gallery %}
+        {% include carousel.html images=page.gallery title=page.title %}
+      {% else %}
+        <figure>
+          <img class="project-hero" src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" decoding="async">
+          {% include caption.html text=page.image_caption %}
+        </figure>
+      {% endif %}
+      {% for video in page.videos %}
+        <figure class="project-video">
+          <iframe src="https://www.youtube.com/embed/{{ video.id | escape }}" title="{{ video.title | escape }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          {% assign video_caption = video.caption | default: video.title %}
+          {% include caption.html text=video_caption %}
+        </figure>
+      {% endfor %}
+    </div>
+    <div class="prose project-copy">{{ content }}</div>
+  </div>
+  <div class="project-back"><a class="text-link" href="{{ '/projects/' | relative_url }}"><span aria-hidden="true">←</span> Back to select projects</a></div>
+</article>
