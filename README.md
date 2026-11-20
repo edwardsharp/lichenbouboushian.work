@@ -187,4 +187,4 @@ _note:_ preview services cache results and decide how to crop and display images
 
 - atkinson hyperlegible next is self-hosted, including italics, with a variable 200–800 weight range. its extra-light 200 weight is used for large headings; body copy stays at 400.
 - font license: `src/assets/fonts/OFL.txt` (SIL open font license).
-- light and dark colors follow `prefers-color-scheme`, including changes made while the page is open. dark mode uses pure black. hot-pink accents use darker magenta for readable links on light backgrounds. palette values are at the top of `src/_sass/_site.scss`.
+- light and dark colors follow `prefers-color-scheme`, including changes made while the page is open. dark mode uses pure black. purple accents use a darker shade for readable links on light backgrounds. palette values are at the top of `src/_sass/_site.scss`.
