@@ -3,7 +3,7 @@ title: Feeling Stewardship
 layout: project
 permalink: "/projects/feeling-stewardship/"
 order: 2
-show_on_home_page: true
+show_on_home_page: false
 medium: Interactive installation
 image: "/content/images/fscarousel/3.jpg"
 image_alt: Two participants engaging with objects in the Feeling Stewardship installation.
