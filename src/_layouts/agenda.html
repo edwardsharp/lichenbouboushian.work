@@ -4,7 +4,6 @@ layout: default
 <article class="shell page agenda">
   {% assign sections = content | split: '<h2' %}
   <header class="agenda-heading">
-    <p class="eyebrow">{{ page.eyebrow | escape }}</p>
     <h1 class="display-title">{{ page.title | escape }}</h1>
     <div class="agenda-intro">{{ sections.first }}</div>
   </header>

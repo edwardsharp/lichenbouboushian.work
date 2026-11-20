@@ -3,8 +3,6 @@ title: Recent + Upcoming
 layout: agenda
 permalink: /recent/
 nav_order: 2
-# note: need to wrap eyebrow in double quotes because of pipe characters "|"
-eyebrow: "News | dates | notes"
 description: Performance engagements, workshops, publications, and an archive of activity through 2025.
 ---
 
