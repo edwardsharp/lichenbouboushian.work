@@ -26,6 +26,7 @@
   --on-neon: #21162f;
   --wash: #ede7f6;
   --selection: #dccbf5;
+  --header-height: 7rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,7 +43,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 1rem); }
 body {
   margin: 0;
   background: var(--paper);
@@ -70,11 +71,12 @@ h1, h2, h3 { line-height: 1.12; }
   top: -8rem;
   left: 1rem;
   padding: .75rem 1rem;
-  z-index: 10;
+  z-index: 30;
   background: var(--ink);
   color: var(--paper);
 }
 .skip-link:focus { top: 1rem; }
+.site-header-wrap { position: sticky; top: 0; z-index: 20; background: var(--paper); }
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -96,8 +98,9 @@ h1, h2, h3 { line-height: 1.12; }
 }
 .nav-list { display: flex; flex-wrap: nowrap; width: max-content; min-width: 100%; gap: .3rem 1.7rem; list-style: none; margin: 0; padding: 0; }
 .nav-list li { flex: 0 0 auto; }
-.nav-list a { display: block; padding-block: .5rem; font-size: .95rem; text-decoration: none; }
-.site-header a[aria-current] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+.nav-list a { position: relative; display: block; padding-block: .5rem; font-size: .95rem; text-decoration: none; }
+.nav-list a::after { content: ""; position: absolute; inset: auto 0 .25rem; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 180ms ease; }
+.nav-list a:hover::after, .nav-list a:focus-visible::after, .nav-list a[aria-current]::after, .nav-list a.is-in-view::after { transform: scaleX(1); }
 .home-intro { padding-block: 4rem; }
 .display-title { font-size: clamp(3rem, 6.8vw, 6.3rem); font-weight: 200; letter-spacing: -.055em; overflow-wrap: anywhere; }
 .intro-bottom { margin: 4rem 0rem; }
@@ -149,7 +152,7 @@ h1, h2, h3 { line-height: 1.12; }
 .project-media.is-measured {
   position: sticky;
   // Tall columns scroll into view before their bottom edge sticks.
-  top: min(2rem, calc(100dvh - var(--media-height) - 2rem));
+  top: min(calc(var(--header-height) + 2rem), calc(100dvh - var(--media-height) - 2rem));
 }
 .project-hero { width: auto; height: auto; max-width: 100%; max-height: 36rem; margin-inline: auto; }
 .project-media .gallery { margin-bottom: 0; }
@@ -159,7 +162,7 @@ h1, h2, h3 { line-height: 1.12; }
 .project-copy > :first-child { margin-top: 0; }
 .project-copy h1 { font-size: 2rem; font-weight: 300; letter-spacing: -.025em; margin-top: 3.5rem; }
 .project-copy h1,
-.project-copy h2 { position: sticky; top: 0; z-index: 1; padding-block: 1rem; background: var(--paper); }
+.project-copy h2 { position: sticky; top: var(--header-height); z-index: 1; padding-block: 1rem; background: var(--paper); }
 .project-copy > p:first-of-type { font-size: 1.35rem; line-height: 1.55; font-weight: 300; }
 .project-copy strong { font-weight: 600; }
 .project-copy pre { overflow-x: auto; }
@@ -192,7 +195,7 @@ h1, h2, h3 { line-height: 1.12; }
 .agenda-heading { margin-bottom: 1.5rem; }
 .agenda-year { display: grid; grid-template-columns: minmax(7rem, 1fr) minmax(0, 3fr); gap: 3rem; padding-block: 3rem 4rem; }
 .agenda-year:last-child { padding-bottom: 0; }
-.agenda-year h2 { position: sticky; top: 2rem; align-self: start; font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 200; letter-spacing: -.05em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.agenda-year h2 { position: sticky; top: calc(var(--header-height) + 2rem); align-self: start; font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 200; letter-spacing: -.05em; color: var(--accent); font-variant-numeric: tabular-nums; }
 .agenda-content { min-width: 0; }
 .agenda-content > * + * { margin-top: 2.5rem; }
 .agenda-content > p { max-width: 46rem; font-size: 1.2rem; line-height: 1.7; overflow-wrap: break-word; }
@@ -232,7 +235,7 @@ h1, h2, h3 { line-height: 1.12; }
   .site-footer { flex-direction: column; gap: .5rem; }
   .agenda-intro { font-size: 1.1rem; }
   .agenda-year { display: block; padding-block: 2rem; }
-  .agenda-year h2 { top: 0; z-index: 1; margin-bottom: 1.5rem; padding-block: .5rem; background: var(--paper); font-size: 3rem; }
+  .agenda-year h2 { top: var(--header-height); z-index: 1; margin-bottom: 1.5rem; padding-block: .5rem; background: var(--paper); font-size: 3rem; }
   .agenda-content > p { font-size: 1.075rem; }
 }
 
@@ -240,4 +243,5 @@ h1, h2, h3 { line-height: 1.12; }
   html { scroll-behavior: auto; }
   .project-image img { transition: none; }
   .project-card a:hover img { transform: none; }
+  .nav-list a::after { transition: none; }
 }

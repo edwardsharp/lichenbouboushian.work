@@ -1,0 +1,20 @@
+<div class="project-body">
+  <div class="project-media">
+    {% if include.item.gallery %}
+      {% include carousel.html images=include.item.gallery title=include.item.title id=include.gallery_id %}
+    {% else %}
+      <figure>
+        <img class="project-hero" src="{{ include.item.image | relative_url }}" alt="{{ include.item.image_alt | escape }}" decoding="async">
+        {% include caption.html text=include.item.image_caption %}
+      </figure>
+    {% endif %}
+    {% for video in include.item.videos %}
+      <figure class="project-video">
+        <iframe src="https://www.youtube.com/embed/{{ video.id | escape }}" title="{{ video.title | escape }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        {% assign video_caption = video.caption | default: video.title %}
+        {% include caption.html text=video_caption %}
+      </figure>
+    {% endfor %}
+  </div>
+  <div class="prose project-copy">{{ include.content }}</div>
+</div>

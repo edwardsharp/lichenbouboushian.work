@@ -20,6 +20,7 @@ collections:
 
 layouts_dir: src/_layouts
 includes_dir: src/_includes
+plugins_dir: src/_plugins
 sass:
   sass_dir: src/_sass
   style: compressed

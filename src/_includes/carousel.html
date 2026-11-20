@@ -1,5 +1,6 @@
+{% assign gallery_id = include.id | default: page.slug %}
 <section class="gallery" data-gallery aria-label="{{ include.title | escape }} image gallery">
-  <div class="gallery-track" id="gallery-{{ page.slug }}" tabindex="0" aria-label="Photographs; use left and right arrow keys to browse">
+  <div class="gallery-track" id="gallery-{{ gallery_id }}" tabindex="0" aria-label="Photographs; use left and right arrow keys to browse">
     {% for image in include.images %}
       <figure class="gallery-slide" role="group" aria-label="{{ forloop.index }} of {{ include.images.size }}">
         <a href="{{ image.src | relative_url }}" aria-label="Open full-size image: {{ image.alt | escape }}">
@@ -12,8 +13,8 @@
   <div class="gallery-controls" hidden>
     <p class="gallery-counter" aria-live="polite" aria-atomic="true"><span data-gallery-current>1</span> / {{ include.images.size }}</p>
     <div class="gallery-buttons">
-      <button type="button" data-gallery-previous aria-controls="gallery-{{ page.slug }}" aria-label="Previous image"><span aria-hidden="true">←</span></button>
-      <button type="button" data-gallery-next aria-controls="gallery-{{ page.slug }}" aria-label="Next image"><span aria-hidden="true">→</span></button>
+      <button type="button" data-gallery-previous aria-controls="gallery-{{ gallery_id }}" aria-label="Previous image"><span aria-hidden="true">←</span></button>
+      <button type="button" data-gallery-next aria-controls="gallery-{{ gallery_id }}" aria-label="Next image"><span aria-hidden="true">→</span></button>
     </div>
   </div>
 </section>

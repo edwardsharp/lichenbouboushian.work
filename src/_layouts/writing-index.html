@@ -7,13 +7,6 @@ layout: default
   </header>
   <div class="prose">
     {{ content }}
-    {% assign writing = site.documents | where: 'layout', 'writing' | sort: 'title' %}
-    {% if writing.size > 0 %}
-      <ul>
-        {% for entry in writing %}
-          <li><a href="{{ entry.url | relative_url }}">{{ entry.title | escape }}</a></li>
-        {% endfor %}
-      </ul>
-    {% endif %}
+    {% include writing-list.html %}
   </div>
 </article>

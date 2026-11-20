@@ -1,6 +1,54 @@
 ---
 permalink: /assets/site.js
 ---
+const header = document.querySelector(".site-header-wrap");
+const homeSections = Array.from(document.querySelectorAll("[data-home-section]")).map((link) => ({
+  link,
+  section: document.getElementById(link.dataset.homeSection),
+})).filter(({ section }) => section);
+let activeHomeLink = null;
+let headerUpdateScheduled = false;
+
+const updateHomeNavigation = () => {
+  const headerBottom = header.getBoundingClientRect().bottom;
+  const position = headerBottom + Math.max(0, window.innerHeight - headerBottom) * 0.25;
+  const active = homeSections.find(({ section }) => {
+    const bounds = section.getBoundingClientRect();
+    return bounds.top <= position && bounds.bottom > position;
+  });
+  const activeLink = active ? active.link : null;
+  if (activeLink === activeHomeLink) return;
+  homeSections.forEach(({ link }) => link.classList.toggle("is-in-view", link === activeLink));
+  activeHomeLink = activeLink;
+  if (activeLink) {
+    const nav = activeLink.closest("nav");
+    const navBounds = nav.getBoundingClientRect();
+    const linkBounds = activeLink.getBoundingClientRect();
+    if (linkBounds.left < navBounds.left) nav.scrollLeft += linkBounds.left - navBounds.left;
+    else if (linkBounds.right > navBounds.right) nav.scrollLeft += linkBounds.right - navBounds.right;
+  }
+};
+
+const scheduleHomeNavigation = () => {
+  if (headerUpdateScheduled) return;
+  headerUpdateScheduled = true;
+  requestAnimationFrame(() => {
+    updateHomeNavigation();
+    headerUpdateScheduled = false;
+  });
+};
+
+const updateHeaderHeight = () => {
+  document.documentElement.style.setProperty("--header-height", `${header.getBoundingClientRect().height}px`);
+  scheduleHomeNavigation();
+};
+new ResizeObserver(updateHeaderHeight).observe(header);
+updateHeaderHeight();
+if (homeSections.length) {
+  window.addEventListener("scroll", scheduleHomeNavigation, { passive: true });
+  window.addEventListener("resize", scheduleHomeNavigation);
+}
+
 document.querySelectorAll("[data-gallery]").forEach((gallery) => {
   const track = gallery.querySelector(".gallery-track");
   const slides = Array.from(gallery.querySelectorAll(".gallery-slide"));

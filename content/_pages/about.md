@@ -1,6 +1,7 @@
 ---
 title: About
 columns: true
+show_collection_on_home_page: true
 permalink: "/about/"
 nav_order: 1
 description: Biography and artist statement of Lichen Bouboushian.

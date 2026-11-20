@@ -2,17 +2,5 @@
 layout: default
 ---
 <article class="shell page agenda">
-  {% assign sections = content | split: '<h2' %}
-  <header class="agenda-heading">
-    <h1 class="display-title">{{ page.title | escape }}</h1>
-    <div class="agenda-intro">{{ sections.first }}</div>
-  </header>
-  {% comment %}Each Markdown level-two heading starts a year; preserve its generated ID and markup.{% endcomment %}
-  {% for section in sections offset:1 %}
-    {% assign heading = section | split: '</h2>' | first | append: '</h2>' %}
-    <section class="agenda-year">
-      <h2{{ heading }}
-      <div class="agenda-content">{{ section | remove_first: heading }}</div>
-    </section>
-  {% endfor %}
+  {% include agenda-body.html title=page.title content=content %}
 </article>

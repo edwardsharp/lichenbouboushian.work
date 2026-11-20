@@ -1,0 +1,13 @@
+<div{% if include.item.columns %} class="project-body"{% endif %}>
+  {% if include.item.gallery %}
+    <div class="{% if include.item.columns %}project-media{% else %}page-image{% endif %}">
+      {% include carousel.html images=include.item.gallery title=include.item.title id=include.gallery_id %}
+    </div>
+  {% elsif include.item.image %}
+    <figure class="{% if include.item.columns %}project-media{% else %}page-image{% endif %}">
+      <img class="{% if include.item.columns %}project-hero{% endif %}" src="{{ include.item.image | relative_url }}" alt="{{ include.item.image_alt | escape }}" decoding="async">
+      {% include caption.html text=include.item.image_caption %}
+    </figure>
+  {% endif %}
+  <div class="prose{% if include.item.columns %} project-copy{% endif %}">{{ include.content }}</div>
+</div>

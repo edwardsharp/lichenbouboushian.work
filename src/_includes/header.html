@@ -1,4 +1,5 @@
-<header class="site-header shell{% if page.url == '/' %} site-header--home{% endif %}">
+<header class="site-header-wrap">
+<div class="site-header shell{% if page.url == '/' %} site-header--home{% endif %}">
   {% unless page.url == '/' %}
     <a class="wordmark" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
   {% endunless %}
@@ -8,8 +9,9 @@
       {% assign featured_writing = site.documents | where: 'layout', 'writing' | where: 'featured', true %}
       {% for item in navigation %}
         {% if item.url == '/writing/' and featured_writing.size == 0 %}{% continue %}{% endif %}
-        <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% elsif page.layout == 'project' and item.url == '/projects/' %} aria-current="page"{% elsif page.layout == 'writing' and item.url == '/writing/' %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>
+        <li><a href="{{ item.url | relative_url }}"{% if page.url == '/' and item.show_collection_on_home_page %} data-home-section="home-{{ item.url | slugify }}"{% endif %}{% if page.url == item.url %} aria-current="page"{% elsif page.layout == 'project' and item.url == '/projects/' %} aria-current="page"{% elsif page.layout == 'writing' and item.url == '/writing/' %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>
       {% endfor %}
     </ul>
   </nav>
+</div>
 </header>

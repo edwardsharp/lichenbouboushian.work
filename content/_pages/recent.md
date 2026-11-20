@@ -1,6 +1,7 @@
 ---
 title: Recent + Upcoming
 layout: agenda
+show_collection_on_home_page: true
 permalink: /recent/
 nav_order: 2
 description: Performance engagements, workshops, publications, and an archive of activity through 2025.

@@ -21,6 +21,7 @@ content/
 src/
   _layouts/           page templates
   _includes/          navigation, footer, project cards, gallery
+  _plugins/           homepage content rendering
   _sass/              styles and light/dark colors
   assets/             CSS entry point, gallery script, self-hosted fonts
 _config.yml           site name, contact address, publishing settings
@@ -37,6 +38,8 @@ Gemfile               ruby dependencies
 the `title` is also the navigation label. `nav_order` puts a page in the main menu; omit it for pages that should not appear there. keep `permalink` unchanged to avoid breaking shared links.
 
 the homepage's text is in `home.md`. its photo grid comes from project files with `show_on_home_page: true`, ordered by `order`. four are selected initially; keep four selected for the intended four-photo layout.
+
+set `show_collection_on_home_page: true` in a page's front matter to include that page on the homepage. pages are hidden there by default; about, recent + upcoming, and select projects are currently enabled. the project index setting controls the whole homepage grid, while each project's `show_on_home_page` controls its individual card. pages remain available at their own URLs.
 
 in `home.md`, set `show_project_text: false` to hide the project titles, media descriptions, and photo captions beneath the homepage photos. set it to `true` to show them. this does not change the project index.
 

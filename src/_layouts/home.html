@@ -9,9 +9,35 @@ layout: default
       <div class="intro-copy">{{ content }}</div>
     </div>
   </section>
-  <section class="selected-work" aria-label="Selected projects">
-    {% assign projects = site.documents | where: 'layout', 'project' | where:
-    'show_on_home_page', true | sort: 'order' %} {% include project-grid.html
-    projects=projects show_text=page.show_project_text %}
-  </section>
+  {% assign projects_index = site.documents | where: 'layout', 'projects' | first %}
+  {% if projects_index.show_collection_on_home_page %}
+    <section class="selected-work" id="home-projects" aria-label="Selected projects">
+      {% assign projects = site.documents | where: 'layout', 'project' | where:
+      'show_on_home_page', true | sort: 'order' %} {% include project-grid.html
+      projects=projects show_text=page.show_project_text %}
+    </section>
+  {% endif %}
 </div>
+{% assign home_pages = site.documents | where: 'show_collection_on_home_page', true | sort: 'nav_order' %}
+{% for item in home_pages %}
+  {% if item.layout == 'home' or item.layout == 'projects' %}{% continue %}{% endif %}
+  {% assign section_id = item.url | slugify | prepend: 'home-' %}
+  {% assign section_content = item | render_home_content %}
+  <section class="shell page{% if item.columns or item.layout == 'project' %} project-page{% endif %}{% if item.layout == 'agenda' %} agenda{% endif %}" id="{{ section_id }}" aria-label="{{ item.title | escape }}">
+    {% if item.layout == 'agenda' %}
+      {% include agenda-body.html title=item.title content=section_content home=true %}
+    {% else %}
+      <header class="page-heading">
+        <h2 class="display-title">{{ item.title | escape }}</h2>
+        {% if item.intro %}<p class="page-intro">{{ item.intro | escape }}</p>{% endif %}
+      </header>
+      {% if item.layout == 'project' %}
+        {% include project-body.html item=item content=section_content gallery_id=section_id %}
+      {% elsif item.layout == 'writing-index' %}
+        <div class="prose">{{ section_content }}{% include writing-list.html %}</div>
+      {% else %}
+        {% include page-body.html item=item content=section_content gallery_id=section_id %}
+      {% endif %}
+    {% endif %}
+  </section>
+{% endfor %}
