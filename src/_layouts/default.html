@@ -13,6 +13,7 @@
     <title>{{ meta_title | escape }}</title>
     <meta name="description" content="{{ meta_description | escape }}">
     <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" type="image/x-icon" sizes="16x16">
+    <link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
     {% if site.url != '' %}
       <link rel="canonical" href="{{ page.url | absolute_url }}">
       <meta property="og:url" content="{{ page.url | absolute_url }}">
