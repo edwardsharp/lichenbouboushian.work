@@ -18,6 +18,7 @@
   color-scheme: light dark;
   --paper: #f5f4ed;
   --ink: #242d27;
+  --hover-ink: #000;
   --muted: #596358;
   --line: #c6ccbd;
   --accent: #6947a5;
@@ -31,6 +32,7 @@
   :root {
     --paper: #000;
     --ink: #f0f0e5;
+    --hover-ink: #fff;
     --muted: #b3bfae;
     --line: #434e41;
     --accent: #c6adff;
@@ -96,7 +98,7 @@ h1, h2, h3 { line-height: 1.12; }
 .site-header a[aria-current] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
 .home-intro { padding-block: 4rem; }
 .display-title { font-size: clamp(3rem, 6.8vw, 6.3rem); font-weight: 200; letter-spacing: -.055em; overflow-wrap: anywhere; }
-.intro-bottom { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem 4rem; margin-top: 2rem; }
+.intro-bottom { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem 4rem; margin: 4rem 0rem; }
 .intro-copy { max-width: 39rem; font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.5; }
 .selected-work { padding-bottom: 5rem; }
 .text-link { display: inline-block; font-size: .95rem; white-space: nowrap; padding-block: .5rem; text-decoration: none; }
@@ -107,11 +109,16 @@ h1, h2, h3 { line-height: 1.12; }
 .project-image { position: relative; overflow: hidden; }
 .project-image img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; transition: transform 250ms ease, filter 300ms ease; }
 .project-card a:hover img { transform: scale(1.025); }
-.project-card a:hover .image-arrow, .project-card a:focus-visible .image-arrow { background: var(--neon); color: var(--on-neon); }
+.project-card:hover .image-arrow,
+.project-card:has(a:focus-visible) .image-arrow { background: var(--neon); color: var(--on-neon); }
 .image-arrow { position: absolute; right: 1rem; bottom: 1rem; width: 2.5rem; height: 2.5rem; display: grid; place-items: center; background: var(--paper); color: var(--ink); border-radius: 50%; }
 .project-caption { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .25rem 1rem; margin-top: .9rem; }
 .project-caption h3 { font-size: 1.2rem; font-weight: 500; }
+.project-card:hover .project-caption h3,
+.project-card:has(> figure > a:focus-visible) .project-caption h3 { color: var(--accent); }
 .project-caption > span { font-size: .85rem; color: var(--muted); }
+.project-card:hover .project-caption > span,
+.project-card:has(> figure > a:focus-visible) .project-caption > span { color: var(--hover-ink); }
 @media (hover: hover) and (pointer: fine) {
   .project-grid:has(.project-image:hover) .project-card:not(:has(.project-image:hover)) .project-image img { filter: grayscale(1); }
 }
