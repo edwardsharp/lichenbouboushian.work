@@ -100,7 +100,7 @@ h1, h2, h3 { line-height: 1.12; }
 .site-header a[aria-current] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
 .home-intro { padding-block: 4rem; }
 .display-title { font-size: clamp(3rem, 6.8vw, 6.3rem); font-weight: 200; letter-spacing: -.055em; overflow-wrap: anywhere; }
-.intro-bottom { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem 4rem; margin: 4rem 0rem; }
+.intro-bottom { margin: 4rem 0rem; }
 .intro-copy { max-width: 39rem; font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.5; }
 .selected-work { padding-bottom: 5rem; }
 .text-link { display: inline-block; font-size: .95rem; white-space: nowrap; padding-block: .5rem; text-decoration: none; }
@@ -205,7 +205,6 @@ h1, h2, h3 { line-height: 1.12; }
   .shell { width: calc(100% - 3rem); }
   .site-header { align-items: flex-start; }
   .nav-list { gap: .2rem 1.2rem; }
-  .intro-bottom { align-items: flex-start; flex-direction: column; gap: 1rem; }
   .project-caption { display: block; }
   .project-caption > span { display: block; margin-top: .4rem; }
   .made-with-sparkle-heartz { margin-left: 0; flex-basis: 100%; }
