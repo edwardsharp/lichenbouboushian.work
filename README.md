@@ -12,8 +12,10 @@ content/
     recent.md         recent + upcoming engagements, and archive
     cv.md             CV download link
     projects.md       project index introduction
+    writing.md        writing index
     press.md          press archive, linked from about
     projects/         one markdown file per project
+    writing/          one markdown file per writing piece
 images/               photographs, including project gallery folders
 documents/            downloadable CV
 src/
@@ -39,6 +41,12 @@ the homepage's text is in `home.md`. its photo grid comes from project files wit
 in `home.md`, set `show_project_text: false` to hide the project titles, media descriptions, and photo captions beneath the homepage photos. set it to `true` to show them. this does not change the project index.
 
 about uses `columns: true` to place its photo carousel beside the writing on larger screens, matching the project layout. edit its `gallery` list to reorder, add, or remove photographs; captions work the same way as project galleries below. when a gallery is present, it replaces the single photograph in the page layout.
+
+## edit or add writing
+
+copy `content/_pages/writing/example.md` into the same folder and update its title, permalink, and text. writing pages use the same two-column layout as about; set `image` and `image_alt` for one photograph, or use a `gallery` list for a carousel with optional captions as shown in the example. replace the example captions and image credits with accurate details. omit the image and gallery fields for a text-only page. headings written with `#` or `##` stay at the top while scrolling.
+
+set `featured: true` on at least one piece to show the writing link in the navigation. if there are no writing files or none are featured, the link is hidden. the writing index lists all pieces, including unfeatured ones; unlike projects, featured writing is not added to the homepage grid. the example can be removed or replaced.
 
 ## edit or add a project
 
@@ -85,7 +93,7 @@ galleries support swiping, scroll snapping, buttons, and left/right/home/end key
 
 ## photo and video captionz
 
-captions are optional front-matter fields and support markdown, including links for credits. no placeholder credits are added to the site. quote caption strings when they contain punctuation such as a colon.
+captions are optional front-matter fields and support markdown, including links for credits. replace the placeholder captions in the writing example before publishing. quote caption strings when they contain punctuation such as a colon.
 
 for a page's main photograph, add `image_caption` alongside `image` and `image_alt`:
 
