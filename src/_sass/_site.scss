@@ -83,6 +83,7 @@ h1, h2, h3 { line-height: 1.12; }
   gap: 1rem 2rem;
   padding-block: 2.2rem;
 }
+.site-header nav { min-width: 0; max-width: 100%; overflow-x: auto; padding: .5rem; margin: -.5rem; }
 .site-header--home nav { margin-left: auto; }
 .wordmark {
   display: inline-flex;
@@ -93,7 +94,8 @@ h1, h2, h3 { line-height: 1.12; }
   letter-spacing: -.025em;
   text-decoration: none;
 }
-.nav-list { display: flex; flex-wrap: wrap; gap: .3rem 1.7rem; list-style: none; margin: 0; padding: 0; }
+.nav-list { display: flex; flex-wrap: nowrap; width: max-content; min-width: 100%; gap: .3rem 1.7rem; list-style: none; margin: 0; padding: 0; }
+.nav-list li { flex: 0 0 auto; }
 .nav-list a { display: block; padding-block: .5rem; font-size: .95rem; text-decoration: none; }
 .site-header a[aria-current] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
 .home-intro { padding-block: 4rem; }
@@ -153,10 +155,16 @@ h1, h2, h3 { line-height: 1.12; }
 .project-media .gallery { margin-bottom: 0; }
 .project-media .gallery-slide img { height: clamp(18rem, 34vw, 32rem); }
 .project-copy { min-width: 0; max-width: none; }
+.project-copy:only-child { grid-column: 1 / -1; max-width: 46rem; }
 .project-copy > :first-child { margin-top: 0; }
+.project-copy h1 { font-size: 2rem; font-weight: 300; letter-spacing: -.025em; margin-top: 3.5rem; }
+.project-copy h1,
 .project-copy h2 { position: sticky; top: 0; z-index: 1; padding-block: 1rem; background: var(--paper); }
 .project-copy > p:first-of-type { font-size: 1.35rem; line-height: 1.55; font-weight: 300; }
 .project-copy strong { font-weight: 600; }
+.project-copy pre { overflow-x: auto; }
+.project-copy table { border-collapse: collapse; }
+.project-copy th, .project-copy td { padding: .35rem 1.5rem .35rem 0; text-align: left; vertical-align: top; }
 .project-copy blockquote { border: 0; padding: 0; margin-top: 2rem; }
 .project-copy blockquote p { font-style: italic; }
 .project-copy blockquote p + p { margin-top: .75rem; font-size: .9rem; font-style: normal; color: var(--muted); }

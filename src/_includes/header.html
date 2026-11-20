@@ -5,11 +5,13 @@
   <nav aria-label="Main navigation">
     <ul class="nav-list">
       {% assign navigation = site.documents | where_exp: "item", "item.nav_order != nil" | sort: 'nav_order' %}
+      {% assign featured_writing = site.documents | where: 'layout', 'writing' | where: 'featured', true %}
       {% for item in navigation %}
+        {% if item.url == '/writing/' and featured_writing.size == 0 %}{% continue %}{% endif %}
         {% if page.url == '/' %}
           {% if item.url == '/about/' or item.url == '/projects/' %}{% continue %}{% endif %}
         {% endif %}
-        <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url or page.layout == 'project' and item.url == '/projects/' %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>
+        <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% elsif page.layout == 'project' and item.url == '/projects/' %} aria-current="page"{% elsif page.layout == 'writing' and item.url == '/writing/' %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>
       {% endfor %}
     </ul>
   </nav>
