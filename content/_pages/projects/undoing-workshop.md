@@ -3,7 +3,7 @@ title: 'UNDOING: The Workshop'
 layout: project
 permalink: "/projects/undoing-workshop/"
 order: 4
-show_on_home_page: true
+show_on_home_page: false
 medium: Workshop
 image: "/content/images/undoingworkshoptile.jpg"
 image_alt: Workshop participants seated together in a circle in a studio.
