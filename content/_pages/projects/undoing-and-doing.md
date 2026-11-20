@@ -5,7 +5,7 @@ permalink: "/projects/undoing-and-doing/"
 order: 3
 featured: true
 medium: Social practice
-image: "/images/resizedUNDOINGDOINGtile.JPG"
+image: "/content/images/resizedUNDOINGDOINGtile.JPG"
 image_alt: Two collective members leaning together outdoors during a movement practice.
 description: A social practice collective exploring communal support through somatic
   and discursive practices.
@@ -15,7 +15,7 @@ videos:
   - id: 4jMznFDWXYo
     title: UNDOING&DOING — performance excerpt
 notes_photo:
-  src: /images/udnotesfromtaty.JPG
+  src: /content/images/udnotesfromtaty.JPG
   alt: Undoing and Doing Notes
 ---
 

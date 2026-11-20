@@ -3,7 +3,7 @@ title: another example
 permalink: /writing/example2/
 featured: true
 description: this is just example without imagez
-social_image: /images/carousel/1.jpg
+social_image: /content/images/carousel/1.jpg
 social_image_alt: Lichen performing with a microphone, green gloves, and rope wrapped around their face.
 ---
 

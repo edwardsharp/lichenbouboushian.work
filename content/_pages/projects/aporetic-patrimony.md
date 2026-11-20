@@ -5,7 +5,7 @@ permalink: "/projects/aporetic-patrimony/"
 order: 1
 featured: true
 medium: Performance
-image: "/images/aporeticpatrimonytile.jpg"
+image: "/content/images/aporeticpatrimonytile.jpg"
 image_alt: Lichen in a gold costume, performing outdoors among trees.
 description: An evening-length performance exploring ancestry, migration, and inherited
   histories through voice and movement.

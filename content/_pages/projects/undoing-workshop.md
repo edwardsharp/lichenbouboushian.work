@@ -5,25 +5,25 @@ permalink: "/projects/undoing-workshop/"
 order: 4
 featured: true
 medium: Workshop
-image: "/images/undoingworkshoptile.jpg"
+image: "/content/images/undoingworkshoptile.jpg"
 image_alt: Workshop participants seated together in a circle in a studio.
 description: A workshop using body, voice, writing, and dialogue to investigate identity,
   history, and liberation.
 workshop_photo:
-  src: /images/undoingworkshopsitephoto.jpeg
+  src: /content/images/undoingworkshopsitephoto.jpeg
   alt: Lorene and Simone performing at Center for Performance Research.
 gallery:
-- src: "/images/workshopcarousel/1.jpg"
+- src: "/content/images/workshopcarousel/1.jpg"
   alt: 'UNDOING: The Workshop, documentation photograph 1.'
-- src: "/images/workshopcarousel/2.jpg"
+- src: "/content/images/workshopcarousel/2.jpg"
   alt: 'UNDOING: The Workshop, documentation photograph 2.'
-- src: "/images/workshopcarousel/3.jpg"
+- src: "/content/images/workshopcarousel/3.jpg"
   alt: 'UNDOING: The Workshop, documentation photograph 3.'
-- src: "/images/workshopcarousel/4.jpg"
+- src: "/content/images/workshopcarousel/4.jpg"
   alt: 'UNDOING: The Workshop, documentation photograph 4.'
-- src: "/images/workshopcarousel/5.jpg"
+- src: "/content/images/workshopcarousel/5.jpg"
   alt: 'UNDOING: The Workshop, documentation photograph 5.'
-- src: "/images/workshopcarousel/6.jpg"
+- src: "/content/images/workshopcarousel/6.jpg"
   alt: 'UNDOING: The Workshop, documentation photograph 6.'
 ---
 

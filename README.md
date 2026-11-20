@@ -16,8 +16,8 @@ content/
     press.md          press archive, linked from about
     projects/         one markdown file per project
     writing/          one markdown file per writing piece
-images/               photographs, including project gallery folders
-documents/            downloadable CV
+  images/             photographs, including project gallery folders
+  documents/          downloadable CV
 src/
   _layouts/           page templates
   _includes/          navigation, footer, project cards, gallery
@@ -61,12 +61,12 @@ order: 5
 featured: false
 medium: performance
 description: a short description for search engines and link previews.
-image: /images/a-project-photo.jpg
+image: /content/images/a-project-photo.jpg
 image_alt: describe what someone can see in the photograph.
 ---
 ```
 
-write the project text below the second `---`. upload photographs to `images/` and use their exact filenames (including capitalization). `image` is the project card photograph. images on cards are cropped; gallery images are shown in full.
+write the project text below the second `---`. upload photographs to `content/images/` and use their exact filenames (including capitalization). `image` is the project card photograph. images on cards are cropped; gallery images are shown in full.
 
 project pages use media and writing columns on larger screens, then stack into a centered single column on smaller screens. the first paragraph is styled as a lead; keep it short. use `**bold**`, `*italics*`, and `>` for quotations where appropriate.
 
@@ -82,10 +82,10 @@ to add a gallery, add this above the closing `---`:
 
 ```yaml
 gallery:
-  - src: /images/my-project/01.jpg
+  - src: /content/images/my-project/01.jpg
     alt: a description of the first photograph.
     caption: optional caption and photographer credit.
-  - src: /images/my-project/02.jpg
+  - src: /content/images/my-project/02.jpg
     alt: a description of the second photograph.
 ```
 
@@ -107,7 +107,7 @@ for carousel photographs, add `caption` to each gallery item:
 
 ```yaml
 gallery:
-  - src: /images/my-project/01.jpg
+  - src: /content/images/my-project/01.jpg
     alt: a description of the photograph.
     caption: "performance documentation. photo by [photographer name](https://example.com)"
 ```
@@ -127,7 +127,7 @@ photographs within the writing use named front-matter objects, such as `notes_ph
 
 ```yaml
 workshop_photo:
-  src: /images/undoingworkshopsitephoto.jpeg
+  src: /content/images/undoingworkshopsitephoto.jpeg
   alt: a description of the photograph.
   caption: "photo by [jimmy urine](https://mindlessselfindulgence.com)"
 ```
@@ -140,7 +140,7 @@ for internal markdown links, use jekyll's `relative_url` filter so links also wo
 
 ```liquid
 [about]({{ '/about/' | relative_url }})
-![a description]({{ '/images/my-photo.jpg' | relative_url }})
+![a description]({{ '/content/images/my-photo.jpg' | relative_url }})
 ```
 
 ## update engagements or the CV
@@ -166,7 +166,7 @@ place a video anywhere between updates, with a blank line on either side:
 
 the imported archive ends in 2025; no new engagements have been invented. historical quotations and credits retain the wording of the original site.
 
-to replace the CV, upload a PDF into `documents/`, then update the link and year in `cv.md`. the existing contact address is retained in `_config.yml`.
+to replace the CV, upload a PDF into `content/documents/`, then update the link and year in `cv.md`. the existing contact address is retained in `_config.yml`.
 
 ## run locally on yr own computer
 

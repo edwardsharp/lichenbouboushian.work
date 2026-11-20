@@ -3,18 +3,18 @@ title: Writing example
 permalink: /writing/example/
 featured: true
 description: An example description for this writing piece.
-social_image: /images/carousel/1.jpg
+social_image: /content/images/carousel/1.jpg
 social_image_alt: Lichen performing with a microphone, green gloves, and rope wrapped around their face.
-image: /images/DSC8148.jpg
+image: /content/images/DSC8148.jpg
 image_alt: Lichen performing with a microphone and black trash bag.
 gallery:
-  - src: /images/carousel/1.jpg
+  - src: /content/images/carousel/1.jpg
     alt: Lichen performing with a microphone, green gloves, and rope wrapped around their face.
     caption: "Example caption: performance documentation."
-  - src: /images/carousel/2.jpg
+  - src: /content/images/carousel/2.jpg
     alt: Lichen with bright pink hair, crouching beside a bed as an audience watches through a window.
     caption: "Example credit: [photographer name](https://example.com)."
-  - src: /images/carousel/3.jpg
+  - src: /content/images/carousel/3.jpg
     alt: Lichen in a patterned shirt, holding their hands around their eyes during a performance.
 ---
 
