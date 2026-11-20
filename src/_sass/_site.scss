@@ -81,6 +81,7 @@ h1, h2, h3 { line-height: 1.12; }
   gap: 1rem 2rem;
   padding-block: 2.2rem;
 }
+.site-header--home nav { margin-left: auto; }
 .wordmark {
   display: inline-flex;
   align-items: center;
@@ -95,9 +96,9 @@ h1, h2, h3 { line-height: 1.12; }
 .site-header a[aria-current] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
 .home-intro { padding-block: 4rem; }
 .display-title { font-size: clamp(3rem, 6.8vw, 6.3rem); font-weight: 200; letter-spacing: -.055em; overflow-wrap: anywhere; }
-.home-intro h1 { margin-top: 1.1rem; }
 .intro-bottom { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem 4rem; margin-top: 2rem; }
 .intro-copy { max-width: 39rem; font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.5; }
+.selected-work { padding-bottom: 5rem; }
 .text-link { display: inline-block; font-size: .95rem; white-space: nowrap; padding-block: .5rem; text-decoration: none; }
 .text-link::after { content: ""; display: block; height: 1px; background: currentColor; margin-top: -.25rem; }
 .text-link span { font-size: 1.25rem; vertical-align: baseline; }
@@ -207,6 +208,7 @@ h1, h2, h3 { line-height: 1.12; }
   .nav-list a { font-size: .85rem; }
   .home-intro { padding-block: 2.5rem; }
   .home-intro .display-title { max-width: 10ch; font-size: clamp(2.8rem, 12vw, 4.25rem); }
+  .selected-work { padding-bottom: 3rem; }
   .project-grid { grid-template-columns: 1fr; gap: 2rem; }
   .page { padding-block: 2.5rem 3rem; }
   .page-heading { margin-bottom: 2rem; }

@@ -15,6 +15,6 @@ layout: default
   <section class="selected-work" aria-label="Selected projects">
     {% assign projects = site.documents | where: 'layout', 'project' | where:
     'featured', true | sort: 'order' %} {% include project-grid.html
-    projects=projects %}
+    projects=projects show_text=page.show_project_text %}
   </section>
 </div>

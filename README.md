@@ -36,6 +36,8 @@ the `title` is also the navigation label. `nav_order` puts a page in the main me
 
 the homepage's text is in `home.md`. its photo grid comes from project files with `featured: true`, ordered by `order`. four are featured initially; keep four selected for the intended four-photo layout.
 
+in `home.md`, set `show_project_text: false` to hide the project titles, media descriptions, and photo captions beneath the homepage photos. set it to `true` to show them. this does not change the project index.
+
 about uses `columns: true` to place its photo carousel beside the writing on larger screens, matching the project layout. edit its `gallery` list to reorder, add, or remove photographs; captions work the same way as project galleries below. when a gallery is present, it replaces the single photograph in the page layout.
 
 ## edit or add a project

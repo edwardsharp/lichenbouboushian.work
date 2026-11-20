@@ -2,7 +2,7 @@
   {% for project in include.projects %}
   <article class="project-card">
     <figure>
-      <a href="{{ project.url | relative_url }}">
+      <a href="{{ project.url | relative_url }}"{% if include.show_text == false %} aria-label="{{ project.title | escape }}"{% endif %}>
         <div class="project-image">
           <img
             src="{{ project.image | relative_url }}"
@@ -14,14 +14,18 @@
           <span class="image-arrow" aria-hidden="true">↗</span>
         </div>
       </a>
-      {% include caption.html text=project.image_caption %}
+      {% unless include.show_text == false %}
+        {% include caption.html text=project.image_caption %}
+      {% endunless %}
     </figure>
+    {% unless include.show_text == false %}
     <a href="{{ project.url | relative_url }}">
       <div class="project-caption">
         <h3>{{ project.title | escape }}</h3>
         <span>{{ project.medium | escape }}</span>
       </div>
     </a>
+    {% endunless %}
   </article>
   {% endfor %}
 </div>
