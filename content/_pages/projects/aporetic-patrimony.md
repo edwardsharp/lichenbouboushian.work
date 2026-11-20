@@ -3,7 +3,7 @@ title: Aporetic Patrimony
 layout: project
 permalink: "/projects/aporetic-patrimony/"
 order: 1
-featured: true
+show_on_home_page: true
 medium: Performance
 image: "/content/images/aporeticpatrimonytile.jpg"
 image_alt: Lichen in a gold costume, performing outdoors among trees.

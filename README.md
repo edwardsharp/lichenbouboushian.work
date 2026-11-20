@@ -36,7 +36,7 @@ Gemfile               ruby dependencies
 
 the `title` is also the navigation label. `nav_order` puts a page in the main menu; omit it for pages that should not appear there. keep `permalink` unchanged to avoid breaking shared links.
 
-the homepage's text is in `home.md`. its photo grid comes from project files with `featured: true`, ordered by `order`. four are featured initially; keep four selected for the intended four-photo layout.
+the homepage's text is in `home.md`. its photo grid comes from project files with `show_on_home_page: true`, ordered by `order`. four are selected initially; keep four selected for the intended four-photo layout.
 
 in `home.md`, set `show_project_text: false` to hide the project titles, media descriptions, and photo captions beneath the homepage photos. set it to `true` to show them. this does not change the project index.
 
@@ -58,7 +58,7 @@ title: a project title
 layout: project
 permalink: /projects/a-project-title/
 order: 5
-featured: false
+show_on_home_page: false
 medium: performance
 description: a short description for search engines and link previews.
 image: /content/images/a-project-photo.jpg
