@@ -3,7 +3,7 @@ title: UNDOING&DOING Collective
 layout: project
 permalink: "/projects/undoing-and-doing/"
 order: 3
-show_on_home_page: true
+show_on_home_page: false
 medium: Social practice
 image: "/content/images/resizedUNDOINGDOINGtile.JPG"
 image_alt: Two collective members leaning together outdoors during a movement practice.
