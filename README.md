@@ -162,7 +162,7 @@ restart the server after changing `_config.yml`. the empty template has no homep
 
 ## publish on github pages
 
-in repository settings, choose github actions as the pages source. the workflow builds pull requests and pushes to `main` and `demo`; it deploys `main` by default. to deploy `demo` instead, add the repository actions variable `PAGES_BRANCH` with value `demo`. this setting belongs to each repository and is not copied when creating a repository from the template.
+in repository settings, choose github actions as the pages source. the workflow builds pull requests and pushes to `main` and `demo`; it deploys `main` by default. to deploy `demo` instead, add the repository actions variable `PAGES_BRANCH` with value `demo`. if the `github-pages` environment restricts deployment branches, allow `demo` there too. these settings belong to each repository and are not copied when creating a repository from the template.
 
 the workflow supplies the deployment URL and base path automatically. for other hosting, set `url` and `baseurl` in `_config.yml`. pages can provide `description`, `social_image`, and `social_image_alt` for link previews. a page's `image` and `image_alt` are used as a fallback, followed by the site-wide values. preview services may cache images and choose their own crops.
 
