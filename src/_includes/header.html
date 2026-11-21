@@ -6,10 +6,13 @@
   <nav aria-label="Main navigation">
     <ul class="nav-list">
       {% assign navigation = site.documents | where_exp: "item", "item.nav_order != nil" | sort: 'nav_order' %}
-      {% assign featured_writing = site.documents | where: 'layout', 'writing' | where: 'featured', true %}
+      {% assign writing = site.documents | where: 'layout', 'writing' %}
+      {% assign projects = site.documents | where: 'layout', 'project' %}
+      {% assign home_projects = projects | where: 'show_on_home_page', true %}
       {% for item in navigation %}
-        {% if item.url == '/writing/' and featured_writing.size == 0 %}{% continue %}{% endif %}
-        <li><a href="{{ item.url | relative_url }}"{% if page.url == '/' and item.show_collection_on_home_page %} data-home-section="home-{{ item.url | slugify }}"{% endif %}{% if page.url == item.url %} aria-current="page"{% elsif page.layout == 'project' and item.url == '/projects/' %} aria-current="page"{% elsif page.layout == 'writing' and item.url == '/writing/' %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>
+        {% if item.layout == 'writing-index' and writing.size == 0 %}{% continue %}{% endif %}
+        {% if item.layout == 'projects' and projects.size == 0 %}{% continue %}{% endif %}
+        <li><a href="{{ item.url | relative_url }}"{% if item.nav_link_title %} aria-label="{{ item.title | escape }}"{% endif %}{% if page.url == '/' and item.show_collection_on_home_page %}{% if item.layout != 'projects' or home_projects.size > 0 %} data-home-section="home-{{ item.url | slugify }}"{% endif %}{% endif %}{% if page.url == item.url %} aria-current="page"{% elsif page.layout == 'project' and item.url == '/projects/' %} aria-current="page"{% elsif page.layout == 'writing' and item.url == '/writing/' %} aria-current="page"{% endif %}>{% if item.nav_link_title %}<span class="nav-title-full" aria-hidden="true">{{ item.title | escape }}</span><span class="nav-title-short" aria-hidden="true">{{ item.nav_link_title | escape }}</span>{% else %}{{ item.title | escape }}{% endif %}</a></li>
       {% endfor %}
     </ul>
   </nav>

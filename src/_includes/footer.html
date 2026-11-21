@@ -1,5 +1,4 @@
 <footer class="site-footer shell">
   <a href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
-  <a href="mailto:{{ site.email | escape }}">{{ site.email | escape }}</a>
-  <a class="made-with-sparkle-heartz" href="https://github.com/edwardsharp/">made with 💖 in NYC</a>
+  {% if site.email != empty %}<a href="mailto:{{ site.email | escape }}">{{ site.email | escape }}</a>{% endif %}
 </footer>

@@ -1,201 +1,171 @@
-# lichen bouboushian
+# artist website template
 
-lichen bouboushian's work thrives in spaces between right and wrong, clear and obscure, structure and oblivion.
+a content-first jekyll website with project galleries, writing, a recent activity archive, responsive layouts, and light and dark themes. the `main` branch starts without pages or images; the `demo` branch contains an example site.
 
-## where things go
+## getting started
+
+use this repository as a template, then edit `_config.yml` to set the site title, description, email, and optionally a social preview image. add content under `content/`:
 
 ```text
 content/
-  _pages/
-    home.md           homepage text
-    about.md          bio and artist statement
-    recent.md         recent + upcoming engagements, and archive
-    cv.md             CV download link
-    projects.md       project index introduction
-    writing.md        writing index
-    press.md          press archive, linked from about
-    projects/         one markdown file per project
-    writing/          one markdown file per writing piece
-  images/             photographs, including project gallery folders
-  documents/          downloadable CV
+  _pages/           markdown pages
+    projects/       one file per project
+    writing/        one file per writing piece
+  images/           photographs
+  documents/        downloadable files
 src/
-  _layouts/           page templates
-  _includes/          navigation, footer, project cards, gallery
-  _plugins/           homepage content rendering
-  _sass/              styles and light/dark colors
-  assets/             CSS entry point, gallery script, self-hosted fonts
-_config.yml           site name, contact address, publishing settings
-Gemfile               ruby dependencies
+  _layouts/         page templates
+  _includes/        reusable components
+  _plugins/         homepage content rendering
+  _sass/            styles and colors
+  assets/           javascript, CSS entry point, and fonts
 ```
 
-## edit a page
+create these folders when needed. put front matter between the opening `---` lines and write markdown below them. file and image paths are case-sensitive.
 
-1. open a file in `content/_pages/`, with github's pencil button or locally if you checked out this github repo on your own computer.
-2. keep the `---` lines at the top. the settingz between them control the page title, address, and etc.
-3. edit the text underneath. blank lines make paragraphs, `##` makes a section heading, and `[words](https://example.com)` makes a link.
-4. preview locally, or save your change on github and let the publishing workflow run.
+## create pages
 
-the `title` is also the navigation label. `nav_order` puts a page in the main menu; omit it for pages that should not appear there. keep `permalink` unchanged to avoid breaking shared links.
+create `content/_pages/home.md`:
 
-the homepage's text is in `home.md`. its photo grid comes from project files with `show_on_home_page: true`, ordered by `order`. four are selected initially; keep four selected for the intended four-photo layout.
+```markdown
+---
+title: Home
+layout: home
+permalink: /
+heading: Artist name
+show_project_text: true
+---
 
-set `show_collection_on_home_page: true` in a page's front matter to include that page on the homepage. pages are hidden there by default; about, recent + upcoming, and select projects are currently enabled. the project index setting controls the whole homepage grid, while each project's `show_on_home_page` controls its individual card. pages remain available at their own URLs.
+An introduction.
+```
 
-in `home.md`, set `show_project_text: false` to hide the project titles, media descriptions, and photo captions beneath the homepage photos. set it to `true` to show them. this does not change the project index.
+create `content/_pages/about.md`:
 
-about uses `columns: true` to place its photo carousel beside the writing on larger screens, matching the project layout. edit its `gallery` list to reorder, add, or remove photographs; captions work the same way as project galleries below. when a gallery is present, it replaces the single photograph in the page layout.
+```markdown
+---
+title: About
+permalink: /about/
+nav_order: 1
+columns: true
+show_collection_on_home_page: true
+image: /content/images/portrait.jpg
+image_alt: Describe the photograph.
+---
 
-## edit or add writing
+## Bio
 
-copy `content/_pages/writing/example.md` into the same folder and update its title, permalink, and text. writing pages use the same two-column layout as about; set `image` and `image_alt` for one photograph, or use a `gallery` list for a carousel with optional captions as shown in the example. replace the example captions and image credits with accurate details. omit the image and gallery fields for a text-only page. headings written with `#` or `##` stay at the top while scrolling.
+Write a biography here.
+```
 
-set `featured: true` on at least one piece to show the writing link in the navigation. if there are no writing files or none are featured, the link is hidden. the writing index lists all pieces, including unfeatured ones; unlike projects, featured writing is not added to the homepage grid. the example can be removed or replaced.
+`nav_order` adds a page to the navigation and controls its order. `nav_link_title` optionally supplies a shorter navigation label when space is limited. `show_collection_on_home_page: true` also displays the page on the homepage; omit it or set it to `false` to keep the page separate. the navigation still links to the separate page. two-column pages show media beside text on larger screens; omit image fields for text-only pages.
 
-## edit or add a project
+## projects and writing
 
-copy an existing file in `content/_pages/projects/`, give it a descriptive filename, and update its settings:
+create `content/_pages/projects.md` to enable the project index:
 
 ```yaml
 ---
-title: a project title
+title: Select Projects
+nav_link_title: Projects
+layout: projects
+permalink: /projects/
+nav_order: 3
+show_collection_on_home_page: true
+---
+```
+
+create a file in `content/_pages/projects/` for each project:
+
+```markdown
+---
+title: Project title
 layout: project
-permalink: /projects/a-project-title/
-order: 5
-show_on_home_page: false
-medium: performance
-description: a short description for search engines and link previews.
-image: /content/images/a-project-photo.jpg
-image_alt: describe what someone can see in the photograph.
+permalink: /projects/project-title/
+order: 1
+show_on_home_page: true
+medium: Performance
+image: /content/images/project.jpg
+image_alt: Describe the photograph.
+description: A short description for link previews.
+---
+
+Project text goes here.
+```
+
+`show_on_home_page` selects individual project cards. the project index's `show_collection_on_home_page` controls whether the grid is shown at all. the navigation link appears when at least one project exists, even if none are selected for the homepage. set `show_project_text: false` in `home.md` to hide titles and captions under its cards.
+
+create `content/_pages/writing.md` to enable the writing index:
+
+```yaml
+---
+title: Writing
+layout: writing-index
+permalink: /writing/
+nav_order: 5
 ---
 ```
 
-write the project text below the second `---`. upload photographs to `content/images/` and use their exact filenames (including capitalization). `image` is the project card photograph. images on cards are cropped; gallery images are shown in full.
+add markdown files in `content/_pages/writing/`, each with a `title` and `permalink`. writing pages use the two-column layout by default. the writing navigation link appears when at least one writing piece exists.
 
-project pages use media and writing columns on larger screens, then stack into a centered single column on smaller screens. the first paragraph is styled as a lead; keep it short. use `**bold**`, `*italics*`, and `>` for quotations where appropriate.
+## media and captions
 
-to put a video below the main photograph or gallery, add a `videos` list above the closing `---`:
+add a `gallery` list to a two-column page or project to show a carousel instead of its single image:
+
+```yaml
+gallery:
+  - src: /content/images/first.jpg
+    alt: Describe the first photograph.
+    caption: "Photo by [photographer](https://example.com)."
+  - src: /content/images/second.jpg
+    alt: Describe the second photograph.
+```
+
+captions are optional and support markdown links. add `image_caption` for a single image. galleries support swiping, buttons, and keyboard navigation. project pages can also list videos:
 
 ```yaml
 videos:
   - id: youtube-video-id
-    title: a descriptive video title or credit
+    title: A descriptive video title.
+    caption: An optional credit.
 ```
 
-to add a gallery, add this above the closing `---`:
+to add an image in page text, define an object such as `detail_photo` with `src`, `alt`, and an optional `caption` in front matter, then insert:
 
-```yaml
-gallery:
-  - src: /content/images/my-project/01.jpg
-    alt: a description of the first photograph.
-    caption: optional caption and photographer credit.
-  - src: /content/images/my-project/02.jpg
-    alt: a description of the second photograph.
+```liquid
+{% include photo.html image=page.detail_photo %}
 ```
 
-galleries support swiping, scroll snapping, buttons, and left/right/home/end keys. they never autoplay, respect reduced-motion preferences, and remain scrollable without javascript. click a photograph for the original image.
+## recent activity
 
-## photo and video captionz
+create `content/_pages/recent.md` with `layout: agenda`, a `title`, `permalink: /recent/`, and a `nav_order`. write an introduction followed by year headings using `##`; use `###` for subsections. add videos between entries:
 
-captions are optional front-matter fields and support markdown, including links for credits. replace the placeholder captions in the writing example before publishing. quote caption strings when they contain punctuation such as a colon.
-
-for a page's main photograph, add `image_caption` alongside `image` and `image_alt`:
-
-```yaml
-image_caption: "photo by [jimmy urine](https://mindlessselfindulgence.com)"
+```liquid
+{% include video.html id="youtube-video-id" title="A descriptive video title" caption="An optional credit" %}
 ```
 
-this appears below the main photograph on about and project pages, and below the same photo on homepage/project cards. credit links are separate from the project link.
-
-for carousel photographs, add `caption` to each gallery item:
-
-```yaml
-gallery:
-  - src: /content/images/my-project/01.jpg
-    alt: a description of the photograph.
-    caption: "performance documentation. photo by [photographer name](https://example.com)"
-```
-
-for youtube videos, keep `title` as a plain-text accessible description and add a separate `caption` for linked credits:
-
-```yaml
-videos:
-  - id: youtube-video-id
-    title: project title, venue, and date
-    caption: "video by [videographer name](https://example.com)"
-```
-
-without `caption`, the video title is shown below the player. project videos use this YAML list; recent + upcoming uses the inline video include described below.
-
-photographs within the writing use named front-matter objects, such as `notes_photo` or `workshop_photo`. add a `caption` to that object:
-
-```yaml
-workshop_photo:
-  src: /content/images/undoingworkshopsitephoto.jpeg
-  alt: a description of the photograph.
-  caption: "photo by [jimmy urine](https://mindlessselfindulgence.com)"
-```
-
-to insert another photograph this way, give it a named object with `src`, `alt`, and an optional `caption`, then place `{% include photo.html image=page.workshop_photo %}` in the page text, using your object's name.
-
-caption fields do not evaluate liquid expressions. use full `https://` links for credits or relative links for pages on this site. alt text describes the image for people who cannot see it; it stays separate from the visible caption.
-
-for internal markdown links, use jekyll's `relative_url` filter so links also work when the site is hosted under a repository path:
+for internal links, use `relative_url` so they work on a site hosted under a repository path:
 
 ```liquid
 [about]({{ '/about/' | relative_url }})
-![a description]({{ '/content/images/my-photo.jpg' | relative_url }})
 ```
 
-## update engagements or the CV
+## run locally
 
-edit `recent.md` as ordinary markdown below its short front-matter block. introductory paragraphs go before the first year. start each year with `##`, put new years first, and separate updates with blank lines. the layout turns those headings into year columns and keeps them sticky while scrolling. use `###` for any subheadings within a year.
-
-```markdown
-## 2027
-
-_september_<br>
-a performance of **project title** at [a venue](https://example.com).
-```
-
-an italic date at the start of a paragraph is styled as a small date label; `<br>` keeps the date on its own line.
-
-place a video anywhere between updates, with a blank line on either side:
-
-```liquid
-{% include video.html id="youtube-video-id" title="project title, venue, and date" caption="video by [name](https://example.com)" %}
-```
-
-`id` is the youtube video ID, not its full URL. `title` is required for accessibility. `caption` is optional and supports markdown links; without it, the title appears below the video. move the include to move the video. no iframe HTML or YAML entry is needed. internal links can use `relative_url`, just like other markdown pages.
-
-the imported archive ends in 2025; no new engagements have been invented. historical quotations and credits retain the wording of the original site.
-
-to replace the CV, upload a PDF into `content/documents/`, then update the link and year in `cv.md`. the existing contact address is retained in `_config.yml`.
-
-## run locally on yr own computer
-
-use ruby 3.3 or later and bundler:
+install ruby 3.3 or later and bundler, then run:
 
 ```sh
 bundle install
 bundle exec jekyll serve --livereload
 ```
 
-changes to page text, images, styles, and templates rebuild automatically. restart the server after changing `_config.yml`.
+restart the server after changing `_config.yml`. the empty template has no homepage until `home.md` is created.
 
 ## publish on github pages
 
-in the repository's settings → pages, choose github actions as the source. the included workflow builds pull requests, then builds and deploys changes pushed to `main`. enable pages before running the workflow.
+in repository settings, choose github actions as the pages source. the workflow builds pull requests and pushes to `main` and `demo`; it deploys `main` by default. to deploy `demo` instead, add the repository actions variable `PAGES_BRANCH` with value `demo`. this setting belongs to each repository and is not copied when creating a repository from the template.
 
-for a custom domain, set it in pages settings, configure DNS, and add a root `CNAME` file containing the domain. the workflow supplies `url` and `baseurl` automatically from github pages, including custom domains. for builds outside that workflow, set `url` in `_config.yml` to the published `https://…` origin and `baseurl` to any hosting subpath.
+the workflow supplies the deployment URL and base path automatically. for other hosting, set `url` and `baseurl` in `_config.yml`. pages can provide `description`, `social_image`, and `social_image_alt` for link previews. a page's `image` and `image_alt` are used as a fallback, followed by the site-wide values. preview services may cache images and choose their own crops.
 
-## link previewz
+## fonts and design
 
-project previews use their `image` and `image_alt` settings. pages without a photograph use `social_image` and `social_image_alt` from `_config.yml`. a page can override its preview without changing its visible photograph by setting `social_image` and `social_image_alt` in its front matter. keep the default image dimensions in `_config.yml` in sync if replacing the default photograph.
-
-_note:_ preview services cache results and decide how to crop and display images; changes may not appear immediately after deployment.
-
-## design and assets
-
-- atkinson hyperlegible next is self-hosted, including italics, with a variable 200–800 weight range. its extra-light 200 weight is used for large headings; body copy stays at 400.
-- font license: `src/assets/fonts/OFL.txt` (SIL open font license).
-- light and dark colors follow `prefers-color-scheme`, including changes made while the page is open. dark mode uses pure black. purple accents use a darker shade for readable links on light backgrounds. palette values are at the top of `src/_sass/_site.scss`.
+atkinson hyperlegible next is self-hosted under `src/assets/fonts/`; its license is in that folder. colors are defined at the top of `src/_sass/_site.scss`, with dark mode following the visitor's system preference.

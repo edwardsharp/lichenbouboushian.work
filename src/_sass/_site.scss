@@ -99,6 +99,8 @@ h1, h2, h3 { line-height: 1.12; }
 .nav-list { display: flex; flex-wrap: nowrap; width: max-content; min-width: 100%; gap: .3rem 1.7rem; list-style: none; margin: 0; padding: 0; }
 .nav-list li { flex: 0 0 auto; }
 .nav-list a { position: relative; display: block; padding-block: .5rem; font-size: .95rem; text-decoration: none; }
+.nav-title-short, .site-header nav.is-compact .nav-title-full { display: none; }
+.site-header nav.is-compact .nav-title-short { display: inline; }
 .nav-list a::after { content: ""; position: absolute; inset: auto 0 .25rem; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 180ms ease; }
 .nav-list a:hover::after, .nav-list a:focus-visible::after, .nav-list a[aria-current]::after, .nav-list a.is-in-view::after { transform: scaleX(1); }
 .home-intro { padding-block: 4rem; }
@@ -129,7 +131,6 @@ h1, h2, h3 { line-height: 1.12; }
 }
 .site-footer { display: flex; flex-wrap: wrap; gap: .75rem 2rem; align-items: baseline; padding-block: 1.5rem 2rem; font-size: .85rem; }
 .site-footer a { text-decoration: none; }
-.made-with-sparkle-heartz { color: var(--muted); margin-left: auto; font-size: .75rem; }
 .page { padding-block: 4rem 5rem; }
 .page-heading { margin-bottom: 3rem; }
 .page-heading .display-title { margin-block: 1rem; }
@@ -147,6 +148,7 @@ h1, h2, h3 { line-height: 1.12; }
 .button-link { display: inline-block; padding: .8rem 1.3rem; background: var(--ink); color: var(--paper); text-decoration: none; }
 .button-link:hover { background: var(--accent); color: var(--paper); }
 .project-page { max-width: 76rem; }
+.home-page-body { margin-inline: auto; }
 .project-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: start; gap: clamp(2rem, 5vw, 5rem); }
 .project-media { min-width: 0; }
 .project-media.is-measured {
@@ -210,7 +212,6 @@ h1, h2, h3 { line-height: 1.12; }
   .nav-list { gap: .2rem 1.2rem; }
   .project-caption { display: block; }
   .project-caption > span { display: block; margin-top: .4rem; }
-  .made-with-sparkle-heartz { margin-left: 0; flex-basis: 100%; }
   .project-page { max-width: 46rem; }
   .project-body { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
   .project-media.is-measured { position: static; }

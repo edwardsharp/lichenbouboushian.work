@@ -2,6 +2,15 @@
 permalink: /assets/site.js
 ---
 const header = document.querySelector(".site-header-wrap");
+const nav = header.querySelector("nav");
+const updateNavLabels = () => {
+  nav.classList.remove("is-compact");
+  if (nav.scrollWidth > nav.clientWidth) nav.classList.add("is-compact");
+};
+new ResizeObserver(updateNavLabels).observe(nav);
+document.fonts.ready.then(updateNavLabels);
+updateNavLabels();
+
 const homeSections = Array.from(document.querySelectorAll("[data-home-section]")).map((link) => ({
   link,
   section: document.getElementById(link.dataset.homeSection),

@@ -10,20 +10,21 @@ layout: default
     </div>
   </section>
   {% assign projects_index = site.documents | where: 'layout', 'projects' | first %}
-  {% if projects_index.show_collection_on_home_page %}
+  {% assign projects = site.documents | where: 'layout', 'project' | where: 'show_on_home_page', true | sort: 'order' %}
+  {% if projects_index.show_collection_on_home_page and projects.size > 0 %}
     <section class="selected-work" id="home-projects" aria-label="Selected projects">
-      {% assign projects = site.documents | where: 'layout', 'project' | where:
-      'show_on_home_page', true | sort: 'order' %} {% include project-grid.html
-      projects=projects show_text=page.show_project_text %}
+      {% include project-grid.html projects=projects show_text=page.show_project_text %}
     </section>
   {% endif %}
 </div>
 {% assign home_pages = site.documents | where: 'show_collection_on_home_page', true | sort: 'nav_order' %}
+{% assign writing = site.documents | where: 'layout', 'writing' %}
 {% for item in home_pages %}
   {% if item.layout == 'home' or item.layout == 'projects' %}{% continue %}{% endif %}
+  {% if item.layout == 'writing-index' and writing.size == 0 %}{% continue %}{% endif %}
   {% assign section_id = item.url | slugify | prepend: 'home-' %}
   {% assign section_content = item | render_home_content %}
-  <section class="shell page{% if item.columns or item.layout == 'project' %} project-page{% endif %}{% if item.layout == 'agenda' %} agenda{% endif %}" id="{{ section_id }}" aria-label="{{ item.title | escape }}">
+  <section class="shell page{% if item.layout == 'agenda' %} agenda{% endif %}" id="{{ section_id }}" aria-label="{{ item.title | escape }}">
     {% if item.layout == 'agenda' %}
       {% include agenda-body.html title=item.title content=section_content home=true %}
     {% else %}
@@ -32,11 +33,19 @@ layout: default
         {% if item.intro %}<p class="page-intro">{{ item.intro | escape }}</p>{% endif %}
       </header>
       {% if item.layout == 'project' %}
-        {% include project-body.html item=item content=section_content gallery_id=section_id %}
+        <div class="project-page home-page-body">
+          {% include project-body.html item=item content=section_content gallery_id=section_id %}
+        </div>
       {% elsif item.layout == 'writing-index' %}
         <div class="prose">{{ section_content }}{% include writing-list.html %}</div>
       {% else %}
-        {% include page-body.html item=item content=section_content gallery_id=section_id %}
+        {% if item.columns %}
+          <div class="project-page home-page-body">
+            {% include page-body.html item=item content=section_content gallery_id=section_id %}
+          </div>
+        {% else %}
+          {% include page-body.html item=item content=section_content gallery_id=section_id %}
+        {% endif %}
       {% endif %}
     {% endif %}
   </section>
