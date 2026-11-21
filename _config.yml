@@ -1,10 +1,12 @@
-title: Artist website
-description: ""
+title: Judy
+description: A sample artist website featuring Judy.
 email: ""
 lang: en
 locale: en_US
 url: ""
 baseurl: ""
+social_image: /content/images/judy-03.webp
+social_image_alt: Judy sitting beside a lamp.
 
 collections_dir: content
 collections:
