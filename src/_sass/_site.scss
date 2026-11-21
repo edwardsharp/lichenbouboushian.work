@@ -131,6 +131,7 @@ h1, h2, h3 { line-height: 1.12; }
 }
 .site-footer { display: flex; flex-wrap: wrap; gap: .75rem 2rem; align-items: baseline; padding-block: 1.5rem 2rem; font-size: .85rem; }
 .site-footer a { text-decoration: none; }
+.made-with-sparkle-heartz { color: var(--muted); margin-left: auto; font-size: .75rem; }
 .page { padding-block: 4rem 5rem; }
 .page-heading { margin-bottom: 3rem; }
 .page-heading .display-title { margin-block: 1rem; }
@@ -212,6 +213,7 @@ h1, h2, h3 { line-height: 1.12; }
   .nav-list { gap: .2rem 1.2rem; }
   .project-caption { display: block; }
   .project-caption > span { display: block; margin-top: .4rem; }
+  .made-with-sparkle-heartz { margin-left: 0; flex-basis: 100%; }
   .project-page { max-width: 46rem; }
   .project-body { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
   .project-media.is-measured { position: static; }
