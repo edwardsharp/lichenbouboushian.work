@@ -12,7 +12,7 @@ layout: default
   {% assign projects_index = site.documents | where: 'layout', 'projects' | first %}
   {% assign projects = site.documents | where: 'layout', 'project' | where: 'show_on_home_page', true | sort: 'order' %}
   {% if projects_index.show_collection_on_home_page and projects.size > 0 %}
-    <section class="selected-work" id="home-projects" aria-label="Selected projects">
+    <section class="selected-work" id="home-projects" aria-label="{{ projects_index.title | escape }}">
       {% include project-grid.html projects=projects show_text=page.show_project_text %}
     </section>
   {% endif %}
